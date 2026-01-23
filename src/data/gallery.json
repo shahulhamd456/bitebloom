@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "src": "/asset/p1.jpg",
+    "category": "Cupcakes",
+    "title": "Gourmet Cupcakes",
+    "description": "A selection of our finest gourmet cupcakes, baked fresh every morning.",
+    "relatedProductIds": [
+      1,
+      6
+    ]
+  },
+  {
+    "id": 2,
+    "src": "/asset/p2.jpg",
+    "category": "Breads",
+    "title": "Artisan Breads",
+    "description": "Rustic, crusty, and perfect for any meal. Our sourdough is a crowd favorite.",
+    "relatedProductIds": [
+      2,
+      5
+    ]
+  },
+  {
+    "id": 3,
+    "src": "/asset/p3.jpg",
+    "category": "Pastries",
+    "title": "Flaky Pastries",
+    "description": "Buttery, flaky, and filled with delicious jams or creams.",
+    "relatedProductIds": [
+      3,
+      4
+    ]
+  },
+  {
+    "id": 4,
+    "src": "/asset/p4.jpg",
+    "category": "Special",
+    "title": "Special Occasions",
+    "description": "Made for those special moments that deserve a little extra sweetness.",
+    "relatedProductIds": [
+      4,
+      7
+    ]
+  },
+  {
+    "id": 5,
+    "src": "/asset/cookies.png",
+    "category": "Cookies",
+    "title": "Cookie Collection",
+    "description": "Soft, chewy, and packed with flavor. The perfect companion for your coffee.",
+    "relatedProductIds": [
+      3,
+      6
+    ]
+  },
+  {
+    "id": 6,
+    "src": "/asset/a1.jpg",
+    "category": "Cakes",
+    "title": "Celebration Cakes",
+    "description": "Stunning cakes designed to be the centerpiece of your celebration.",
+    "relatedProductIds": [
+      1,
+      6
+    ]
+  },
+  {
+    "id": 7,
+    "src": "/asset/a2.jpg",
+    "category": "Cakes",
+    "title": "Wedding Cakes",
+    "description": "Elegant designs and exquisite flavors for your big day.",
+    "relatedProductIds": [
+      1,
+      6
+    ]
+  },
+  {
+    "id": 8,
+    "src": "/asset/heroo.jpg",
+    "category": "Featured",
+    "title": "Chef's Special",
+    "description": "Seasonal creations straight from the imagination of our head chef.",
+    "relatedProductIds": [
+      2,
+      5
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+.About {
+    padding: 50px 0;
+}
+
+.abotimg img {
+    width: 100%;
+}
+
+.abouttxt h1 {
+    padding-bottom: 30px;
+    padding-top: 20px;
+}
+
+.we {
+    /* Used for membership title too? Check responsive.css:8 */
+}
+
+@media screen and (max-width: 768px) {
+    .we {
+        font-size: 40px !important;
+    }
+}

@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "title": "Cup Cake",
+    "category": "Cupcakes",
+    "img": "/asset/p1.jpg",
+    "price": 5,
+    "rating": 4.5,
+    "name": "Cup Cake",
+    "description": "Moist and fluffy cupcakes topped with our signature buttercream frosting. Available in vanilla, chocolate, and red velvet flavors."
+  },
+  {
+    "id": 2,
+    "title": "Sourdough",
+    "category": "Artisan Breads",
+    "img": "/asset/p2.jpg",
+    "price": 8,
+    "rating": 4.8,
+    "name": "Sourdough Loaf",
+    "description": "Traditional artisanal sourdough bread with a crispy crust and soft, airy interior. Naturally leavened and baked fresh daily."
+  },
+  {
+    "id": 3,
+    "title": "Cookies",
+    "category": "Cookies",
+    "img": "/asset/cookies.png",
+    "price": 12,
+    "rating": 4.9,
+    "name": "Box of Cookies",
+    "description": "A delightful assortment of our best-selling cookies including chocolate chip, oatmeal raisin, and double chocolate. Perfect for sharing!"
+  },
+  {
+    "id": 4,
+    "title": "GF Pastry",
+    "category": "Gluten Free",
+    "img": "/asset/p4.jpg",
+    "price": 6,
+    "rating": 4.2,
+    "name": "GF Pastry",
+    "description": "Delicious gluten-free pastries that taste just as good as the real thing. Made with high-quality almond and rice flour blends."
+  },
+  {
+    "id": 5,
+    "title": "Breakfast Bundle",
+    "category": "Artisan Breads",
+    "img": "/asset/a1.jpg",
+    "price": 15,
+    "rating": 5,
+    "name": "Breakfast Bundle",
+    "description": "Start your day right with our Breakfast Bundle. Includes 2 freshly baked Sourdough Loaves and a bag of our house blend coffee beans."
+  },
+  {
+    "id": 6,
+    "title": "Party Pack",
+    "category": "Cupcakes",
+    "img": "/asset/pp.jpg",
+    "price": 25,
+    "rating": 4.7,
+    "name": "Party Pack",
+    "description": "The ultimate party pleaser! Contains 12 of our signature cookies and 6 assorted cupcakes. Guaranteed to make everyone smile."
+  },
+  {
+    "id": 7,
+    "title": "GF Starter",
+    "category": "Gluten Free",
+    "img": "/asset/p3.jpg",
+    "price": 18,
+    "rating": 4,
+    "name": "GF Starter",
+    "description": "New to gluten-free? Try our starter pack featuring an assortment of our best gluten-free pastries and breads."
+  },
+  {
+    "id": 8,
+    "title": "Chocolate Muffin",
+    "category": "Pastries",
+    "img": "/asset/p1.jpg",
+    "price": 4.5,
+    "rating": 4.6,
+    "name": "Choco Muffin",
+    "description": "Rich, double chocolate muffins with chocolate chips in every bite."
+  },
+  {
+    "id": 9,
+    "title": "Blueberry Scones",
+    "category": "Pastries",
+    "img": "/asset/a2.jpg",
+    "price": 5.5,
+    "rating": 4.3,
+    "name": "Blueberry Scone",
+    "description": "Buttery scones packed with fresh blueberries and topped with a lemon glaze."
+  },
+  {
+    "id": 10,
+    "title": "Rye Bread",
+    "category": "Artisan Breads",
+    "img": "/asset/p2.jpg",
+    "price": 9,
+    "rating": 4.4,
+    "name": "Dark Rye",
+    "description": "Dense and flavorful rye bread, perfect for deli sandwiches."
+  },
+  {
+    "id": 11,
+    "title": "Macarons",
+    "category": "Cookies",
+    "img": "/asset/cookies.png",
+    "price": 20,
+    "rating": 4.8,
+    "name": "Macaron Box",
+    "description": "A colorful box of 6 Parisian-style macarons in assorted flavors."
+  },
+  {
+    "id": 12,
+    "title": "Red Velvet Cupcake",
+    "category": "Cupcakes",
+    "img": "/asset/pp3.jpg",
+    "price": 5.5,
+    "rating": 4.9,
+    "name": "Red Velvet",
+    "description": "Classic red velvet cake with tangy cream cheese frosting."
+  },
+  {
+    "id": 13,
+    "title": "Ciabatta",
+    "category": "Artisan Breads",
+    "img": "/asset/a1.jpg",
+    "price": 7,
+    "rating": 4.5,
+    "name": "Ciabatta Loaf",
+    "description": "Italian white bread with a crisp crust and large, airy holes."
+  },
+  {
+    "id": 14,
+    "title": "Lemon Tart",
+    "category": "Pastries",
+    "img": "/asset/p3.jpg",
+    "price": 6.5,
+    "rating": 4.7,
+    "name": "Lemon Tart",
+    "description": "Zesty lemon curd in a butter tart shell, topped with meringue."
+  },
+  {
+    "id": 15,
+    "title": "Almond Biscotti",
+    "category": "Cookies",
+    "img": "/asset/cookies.png",
+    "price": 14,
+    "rating": 4.6,
+    "name": "Biscotti Jar",
+    "description": "Crunchy twice-baked almond cookies, perfect for dipping in coffee."
+  },
+  {
+    "id": 16,
+    "title": "Wedding Cake",
+    "category": "Special Occasion",
+    "img": "/asset/p1.jpg",
+    "price": 45,
+    "rating": 5,
+    "name": "Mini Wedding Cake",
+    "description": "A beautiful 6-inch cake designed for intimate celebrations."
+  },
+  {
+    "id": 17,
+    "title": "GF Brownies",
+    "category": "Gluten Free",
+    "img": "/asset/p4.jpg",
+    "price": 16,
+    "rating": 4.8,
+    "name": "GF Brownie Box",
+    "description": "Fudgy, rich chocolate brownies made with almond flour."
+  },
+  {
+    "id": 18,
+    "title": "Baguette",
+    "category": "Artisan Breads",
+    "img": "/asset/a2.jpg",
+    "price": 4,
+    "rating": 4.7,
+    "name": "French Baguette",
+    "description": "Classic French stick with a crunchy crust and chewy crumb."
+  },
+  {
+    "id": 19,
+    "title": "Cinnamon Roll",
+    "category": "Pastries",
+    "img": "/asset/p3.jpg",
+    "price": 5,
+    "rating": 4.9,
+    "name": "Cinnamon Roll",
+    "description": "Warm, gooey cinnamon roll topped with cream cheese icing."
+  },
+  {
+    "id": 20,
+    "title": "Oatmeal Cookies",
+    "category": "Cookies",
+    "img": "/asset/cookies.png",
+    "price": 10,
+    "rating": 4.4,
+    "name": "Oatmeal Raisin",
+    "description": "Chewy oatmeal cookies with plump raisins and a hint of cinnamon."
+  },
+  {
+    "id": 21,
+    "title": "Vanilla Bean Muffin",
+    "category": "Pastries",
+    "img": "/asset/pp.jpg",
+    "price": 4.5,
+    "rating": 4.3,
+    "name": "Vanilla Muffin",
+    "description": "Simple and delicious vanilla muffin with real vanilla bean specks."
+  },
+  {
+    "id": 22,
+    "title": "Focaccia",
+    "category": "Artisan Breads",
+    "img": "/asset/a1.jpg",
+    "price": 8.5,
+    "rating": 4.7,
+    "name": "Rosemary Focaccia",
+    "description": "Olive oil-rich flatbread topped with fresh rosemary and sea salt."
+  },
+  {
+    "id": 23,
+    "title": "Carrot Cake",
+    "category": "Cupcakes",
+    "img": "/asset/pp3.jpg",
+    "price": 5.5,
+    "rating": 4.8,
+    "name": "Carrot Cupcake",
+    "description": "Spiced carrot cake with walnuts and cream cheese frosting."
+  },
+  {
+    "id": 24,
+    "title": "Fruit Tart",
+    "category": "Special Occasion",
+    "img": "/asset/p3.jpg",
+    "price": 22,
+    "rating": 4.9,
+    "name": "Fresh Fruit Tart",
+    "description": "Large tart filled with pastry cream and topped with seasonal fruits."
+  },
+  {
+    "id": 25,
+    "title": "Brioche Bun",
+    "category": "Artisan Breads",
+    "img": "/asset/a2.jpg",
+    "price": 2,
+    "rating": 4.6,
+    "name": "Brioche Bun",
+    "description": "Rich, buttery bun perfect for burgers or sandwiches."
+  },
+  {
+    "id": 26,
+    "title": "Gingerbread Men",
+    "category": "Cookies",
+    "img": "/asset/cookies.png",
+    "price": 12,
+    "rating": 4.5,
+    "name": "Gingerbread Pack",
+    "description": "Spiced gingerbread cookies decorated with royal icing."
+  },
+  {
+    "id": 27,
+    "title": "Keto Bagel",
+    "category": "Special Occasion",
+    "img": "/asset/p2.jpg",
+    "price": 3,
+    "rating": 4.1,
+    "name": "Keto Bagel",
+    "description": "Low-carb bagel made with almond flour and cheese."
+  },
+  {
+    "id": 28,
+    "title": "Eclair",
+    "category": "Pastries",
+    "img": "/asset/p3.jpg",
+    "price": 5.5,
+    "rating": 4.8,
+    "name": "Chocolate Eclair",
+    "description": "Choux pastry filled with cream and topped with chocolate ganache."
+  },
+  {
+    "id": 29,
+    "title": "Pretzel",
+    "category": "Artisan Breads",
+    "img": "/asset/a1.jpg",
+    "price": 3.5,
+    "rating": 4.6,
+    "name": "Soft Pretzel",
+    "description": "Large soft pretzel sprinkled with coarse salt."
+  },
+  {
+    "id": 30,
+    "title": "Birthday Cake Pop",
+    "category": "Special Occasion",
+    "img": "/asset/pp.jpg",
+    "price": 3,
+    "rating": 4.7,
+    "name": "Cake Pop",
+    "description": "Bite-sized cake on a stick, dipped in chocolate and sprinkles."
+  }
+]

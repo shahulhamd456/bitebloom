@@ -1,0 +1,104 @@
+.map {
+    padding: 50px 0;
+}
+
+.purple {
+    background-color: #734F96;
+    padding: 50px;
+    border-radius: 30px;
+}
+
+.purptxt h2 {
+    font-size: 55px;
+    color: #FFFDD0 !important;
+}
+
+.order {
+    margin: 25px 0;
+}
+
+.order h4 {
+    font-family: "Cookie", cursive !important;
+    color: #FFFDD0 !important;
+    font-size: 30px !important;
+}
+
+.phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.phone1 {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #FFFDD0;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.phone1 img {
+    width: 25px;
+    height: 25px;
+}
+
+.phone2 {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #FFFDD0;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+}
+
+.phone2 img {
+    width: 25px;
+    height: 25px;
+}
+
+.wash1 {
+    color: #FFFDD0;
+}
+
+.washi {
+    color: #FFFDD0 !important;
+    max-width: 250px;
+}
+
+.map1 {
+    /* height: 100%; removed to prevent collapsing */
+    /* display: flex; removed to prevent flex issues */
+    /* align-items: center; removed */
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.map1 iframe {
+    width: 100%;
+    height: 450px;
+    /* Matched from legacy or MapSection.jsx */
+    border-radius: 30px;
+    border: 0;
+}
+
+/* Ensure images in map section behave responsive if needed, though mostly icons here */
+.map img {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .purple {
+        padding: 30px !important;
+    }
+
+    .purptxt h2 {
+        font-size: 40px !important;
+        /* Responsive adjustment likely needed */
+    }
+}

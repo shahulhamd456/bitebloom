@@ -1,0 +1,47 @@
+@media screen and (min-width: 1400px) {
+    .container {
+        max-width: 1200px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .we {
+        font-size: 40px !important;
+    }
+
+    h1 {
+        font-size: 40px !important;
+    }
+
+    .ph5 {
+        font-size: 20px !important;
+    }
+
+    .ppp {
+        max-width: 100%;
+    }
+    .navbar-nav{
+        text-align: left;
+        justify-content: left;
+        align-items: normal;
+        gap: 0;
+    }
+    .search{
+        text-align: left;
+        margin: 10px;
+    }
+.bakery h4{
+    font-size: 20px !important;
+}
+
+}
+
+@media screen and (max-width: 426px) {
+    .ppp {
+        max-width: 100%;
+    }
+
+    .purple {
+        padding: 30px !important;
+    }
+}

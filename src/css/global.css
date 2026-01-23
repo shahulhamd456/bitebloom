@@ -1,0 +1,119 @@
+/* Global Resets & Typography */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", sans-serif !important;
+    background-color: #FFFDD0 !important;
+}
+
+h1,
+h2 {
+    font-family: "Cookie", cursive !important;
+    color: #DF7E5D !important;
+}
+
+h1 {
+    font-size: 65px !important;
+    line-height: 1.0 !important;
+}
+
+h4 {
+    font-family: "Cookie", cursive !important;
+    color: #FFFDD0 !important;
+    font-size: 30px !important;
+}
+
+p {
+    color: rgba(0, 0, 0, 0.667);
+}
+
+/* Utilities */
+.button {
+    border: none;
+    border-radius: 50px;
+    background-color: #DF7E5D;
+    color: #fff;
+    padding: 8px 28px;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.button:hover {
+    color: #FFFDD0;
+}
+
+.ph5 {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    margin: 10px 0;
+    font-family: "Inter", sans-serif !important;
+    color: #000000 !important;
+}
+
+.ppp {
+    max-width: 55%;
+    text-align: center;
+    margin: auto;
+    padding: 20px 0;
+    padding-bottom: 50px;
+}
+
+.purple {
+    background-color: #734F96;
+    padding: 50px;
+    border-radius: 30px;
+}
+
+.purptxt h2 {
+    font-size: 55px;
+    color: #FFFDD0 !important;
+}
+
+.page-container {
+    padding-top: 50px;
+    min-height: 80vh;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 50px;
+    color: #1E1E1E;
+}
+
+/* Container responsive */
+@media screen and (min-width: 1400px) {
+    .container {
+        max-width: 1200px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 40px !important;
+    }
+
+    .ph5 {
+        font-size: 20px !important;
+    }
+
+    .ppp {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .ppp {
+        max-width: 100%;
+    }
+
+    .purple {
+        padding: 30px !important;
+    }
+}

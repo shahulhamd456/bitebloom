@@ -1,0 +1,69 @@
+.gallery-detail-page {
+    padding: 140px 0 80px;
+    min-height: 100vh;
+}
+
+.gallery-main-image-container {
+    width: 100%;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(223, 126, 93, 0.15);
+    /* Soft peach shadow matches brand */
+    transform: perspective(1000px) rotateY(2deg);
+    /* Subtle 3D effect */
+    transition: transform 0.5s ease;
+}
+
+.gallery-main-image-container:hover {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+.gallery-main-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-info-content {
+    padding-left: 30px;
+}
+
+.gallery-detail-title {
+    font-size: 64px;
+    font-family: "Cookie", cursive;
+    color: #DF7E5D;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.gallery-decorative-line {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #DF7E5D, transparent);
+    margin-bottom: 30px;
+    border-radius: 2px;
+}
+
+.gallery-description {
+    font-size: 18px;
+    line-height: 1.9;
+    color: #555;
+    font-weight: 300;
+}
+
+.related-products-section {
+    margin-top: 100px;
+    background: #fff;
+    padding: 60px 40px;
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.related-products-title {
+    text-align: center;
+    font-size: 42px;
+    font-family: "Cookie", cursive;
+    color: #1E1E1E;
+    margin-bottom: 50px;
+}

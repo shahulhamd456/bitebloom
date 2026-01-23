@@ -1,0 +1,122 @@
+.offer-card {
+    background-color: #FFFDD0;
+    border: 2px solid #DF7E5D;
+    border-radius: 30px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-card-img {
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 120%;
+    width: 300px;
+    object-fit: contain;
+    opacity: 0.9;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    mix-blend-mode: multiply;
+}
+
+.offer-card-img-rotate {
+    right: -60px;
+    transform: translateY(-50%) rotate(15deg);
+}
+
+.offer-title {
+    font-size: 40px;
+    color: #DF7E5D;
+}
+
+.offer-subtitle {
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+.bundle-card {
+    background-color: #fff;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+}
+
+.bundle-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.bundle-price {
+    color: #DF7E5D;
+    font-family: 'Cookie', cursive;
+    font-size: 30px;
+}
+
+.membership-section {
+    background-color: #734F96;
+    margin-bottom: 80px;
+    border-radius: 30px;
+    padding: 50px;
+}
+
+.membership-text {
+    padding-left: 20px;
+}
+
+.membership-btn {
+    border: none;
+    border-radius: 50px;
+    background-color: #FFFDD0;
+    color: #DF7E5D;
+    padding: 12px 35px;
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .gap {
+        gap: 30px !important;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .gap {
+        gap: 30px !important;
+    }
+
+    .offer-card {
+        padding: 20px;
+    }
+
+    .offer-card-img {
+        width: 150px;
+        right: -20px;
+    }
+
+    .offer-card-img-rotate {
+        width: 150px;
+        right: -25px;
+    }
+
+    .offer-title {
+        font-size: 30px !important;
+    }
+
+    .ph5 {
+        font-size: 18px !important;
+    }
+}
