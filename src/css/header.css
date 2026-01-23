@@ -102,8 +102,18 @@ header {
     }
 
     .search {
-        text-align: left;
-        margin: 10px;
+        text-align: center;
+        margin: 5px;
+    }
+
+    /* Target the search dropdown specifically on mobile */
+    .search>div {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: 90vw !important;
+        min-width: 0 !important;
+        max-width: 320px !important;
     }
 }
 

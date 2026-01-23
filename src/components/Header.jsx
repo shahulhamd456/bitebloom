@@ -236,9 +236,9 @@ const Header = () => {
                                             </div>
                                         )}
                                     </div>
-                                    <div className="search"> <Link href="/products"><img src="/asset/store.svg" alt="" /></Link></div>
+                                    <div className="search"> <Link href="/products" onClick={() => setIsMenuOpen(false)}><img src="/asset/store.svg" alt="" /></Link></div>
 
-                                    <div className="search"><Link href="/contact"><img src="/asset/phone.svg" alt="" /></Link></div>
+                                    <div className="search"><Link href="/contact" onClick={() => setIsMenuOpen(false)}><img src="/asset/phone.svg" alt="" /></Link></div>
                                     <div className="search d-none d-lg-block">
                                         <button onClick={toggleCart} className="cart-btn-premium" style={{ border: 'none', padding: 0 }}>
                                             <ShoppingBag color="#FFFDD0" size={20} />
