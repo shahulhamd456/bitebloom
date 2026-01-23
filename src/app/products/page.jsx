@@ -17,6 +17,7 @@ const Products = () => {
     const [minRating, setMinRating] = useState(0);
     const [hoverRating, setHoverRating] = useState(0);
     const [isSortOpen, setIsSortOpen] = useState(false);
+    const [showMobileFilters, setShowMobileFilters] = useState(false);
 
     const handleCategoryChange = (category) => {
         if (selectedCategories.includes(category)) {
@@ -98,8 +99,17 @@ const Products = () => {
 
             <div className="container">
                 <div className="shop-layout">
+                    {/* Mobile Filter Toggle */}
+                    <button
+                        className="d-lg-none button"
+                        onClick={() => setShowMobileFilters(!showMobileFilters)}
+                        style={{ width: '100%', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
+                    >
+                        {showMobileFilters ? 'Hide Filters' : 'Show Filters'}
+                    </button>
+
                     {/* Sidebar */}
-                    <aside className="shop-sidebar">
+                    <aside className={`shop-sidebar ${showMobileFilters ? 'd-block' : 'd-none d-lg-block'}`}>
                         <div className="filter-section">
                             <h3 className="filter-title">By Categories</h3>
                             <ul className="category-list">

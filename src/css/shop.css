@@ -29,7 +29,8 @@
 .shop-sidebar {
     background: transparent;
     position: sticky;
-    top: 100px; /* Adjust based on your header height */
+    top: 100px;
+    /* Adjust based on your header height */
     height: fit-content;
 }
 
@@ -403,12 +404,59 @@
 }
 
 @media (max-width: 991px) {
+    .shop-page {
+        padding: 80px 0 40px;
+    }
+
     .shop-layout {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .shop-sidebar {
-        display: none;
-        /* Hide sidebar on mobile for now as per ref simplicity */
+        position: static;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        display: block;
+        /* Show on mobile */
+    }
+
+    .shop-title {
+        font-size: 45px;
+    }
+
+    .shop-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .active-filters {
+        flex-wrap: wrap;
+    }
+
+    .custom-dropdown {
+        width: 100%;
+    }
+
+    .custom-dropdown-menu {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .shop-title {
+        font-size: 38px;
+    }
+
+    .shop-card-title {
+        font-size: 16px;
+    }
+
+    .card-image-wrapper {
+        height: 200px;
     }
 }
