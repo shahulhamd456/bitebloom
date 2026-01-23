@@ -1,0 +1,115 @@
+/* Admin Dashboard Responsive Styles */
+
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background-color: #F5F6FA;
+    font-family: 'Inter', sans-serif;
+}
+
+.admin-sidebar {
+    width: 280px;
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 30px;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.admin-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Prevent flex overflow */
+}
+
+.admin-header {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F5F6FA;
+}
+
+.admin-content {
+    flex: 1;
+    padding: 0 30px 30px;
+}
+
+/* Mobile Toggle */
+.sidebar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #333;
+    padding: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 991px) {
+    .admin-sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .admin-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .admin-header {
+        padding: 15px 20px;
+    }
+
+    .admin-content {
+        padding: 0 20px 20px;
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+}
+
+/* Dashboard Grid Responsiveness */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 25px;
+}
+
+@media (max-width: 1200px) {
+
+    .col-span-8,
+    .col-span-4 {
+        grid-column: span 12 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-row-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .stat-widget {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 15px;
+    }
+}
