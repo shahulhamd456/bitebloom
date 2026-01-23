@@ -15,20 +15,23 @@ const Testimonials = () => {
         slidesToScroll: 1,
         centerMode: true,
         centerPadding: '0px',
-        arrows: false, // We will use custom external arrows
+        className: 'center',
+        arrows: false,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1200,
                 settings: {
                     slidesToShow: 2,
-                    centerMode: false,
+                    centerMode: true,
                 }
             },
             {
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 1,
-                    centerMode: false,
+                    centerMode: false, // Critical: Disable centerMode on mobile
+                    slidesToScroll: 1,
+                    initialSlide: 1
                 }
             }
         ]
