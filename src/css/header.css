@@ -95,10 +95,10 @@ header {
 
 @media screen and (max-width: 768px) {
     .navbar-nav {
-        text-align: left;
-        justify-content: left;
-        align-items: normal;
-        gap: 0;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
     }
 
     .search {

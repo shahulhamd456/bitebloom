@@ -139,12 +139,12 @@ const Header = () => {
 
                             <div className={`collapse navbar-collapse justify-content-end ${isMenuOpen ? 'show' : ''}`} id="navbarNavAltMarkup">
                                 <div className="navbar-nav">
-                                    <Link className={`nav-link ${isActive('/')}`} href="/">Home</Link>
+                                    <Link className={`nav-link ${isActive('/')}`} href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
 
-                                    <Link className={`nav-link ${isActive('/offers')}`} href="/offers">Offers</Link>
-                                    <Link className={`nav-link ${isActive('/custom-orders')}`} href="/custom-orders">Custom</Link>
-                                    <Link className={`nav-link ${isActive('/gallery')}`} href="/gallery">Gallery</Link>
-                                    <Link className={`nav-link ${isActive('/about')}`} href="/about">About</Link>
+                                    <Link className={`nav-link ${isActive('/offers')}`} href="/offers" onClick={() => setIsMenuOpen(false)}>Offers</Link>
+                                    <Link className={`nav-link ${isActive('/custom-orders')}`} href="/custom-orders" onClick={() => setIsMenuOpen(false)}>Custom</Link>
+                                    <Link className={`nav-link ${isActive('/gallery')}`} href="/gallery" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
+                                    <Link className={`nav-link ${isActive('/about')}`} href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
 
                                 </div>
 
