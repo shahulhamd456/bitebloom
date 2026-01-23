@@ -21,12 +21,14 @@ const Testimonials = () => {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 2,
+                    centerMode: false,
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 768,
                 settings: {
                     slidesToShow: 1,
+                    centerMode: false,
                 }
             }
         ]

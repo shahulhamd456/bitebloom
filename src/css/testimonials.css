@@ -103,4 +103,17 @@
     .slider .slick-list {
         margin: 0 !important;
     }
+
+    .previos-arrow,
+    .next-arrow {
+        height: 45px;
+        width: 45px;
+        font-size: 20px;
+    }
+
+    .previos-arrow svg,
+    .next-arrow svg {
+        height: 24px;
+        width: 12px;
+    }
 }
