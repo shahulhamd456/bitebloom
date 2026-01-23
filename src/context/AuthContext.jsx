@@ -19,7 +19,11 @@ export const AuthProvider = ({ children }) => {
         setLoading(false); // Set loading to false after check
     }, []);
 
-    const login = (role) => {
+    const login = (role, password = '') => {
+        if (role === 'admin' && password !== 'admin123') {
+            return { success: false, message: 'Invalid Admin Password' };
+        }
+
         const newUser = { name: 'Shahul Hameed', role };
         setUser(newUser);
         localStorage.setItem('user', JSON.stringify(newUser));
@@ -29,6 +33,7 @@ export const AuthProvider = ({ children }) => {
         } else {
             router.push('/');
         }
+        return { success: true };
     };
 
     const logout = () => {

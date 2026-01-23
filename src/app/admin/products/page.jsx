@@ -226,84 +226,85 @@ export default function AdminProductsPage() {
                     </div>
                 </div>
             </div>
-            );
+        </div>
+    );
 }
 
-            // Helper Component for Card to avoid duplication
-            const ProductCard = ({product, handleDelete}) => (
-            <div style={{
-                backgroundColor: 'white',
-                borderRadius: '20px',
-                overflow: 'hidden',
-                boxShadow: '0 5px 20px rgba(0,0,0,0.05)',
-                transition: 'transform 0.3s',
-                position: 'relative'
-            }}
-                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-5px)'}
-                onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
-            >
-                <div style={{ height: '180px', backgroundColor: '#f9f9f9', position: 'relative' }}>
-                    <img src={product.img} alt={product.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
+// Helper Component for Card to avoid duplication
+const ProductCard = ({ product, handleDelete }) => (
+    <div style={{
+        backgroundColor: 'white',
+        borderRadius: '20px',
+        overflow: 'hidden',
+        boxShadow: '0 5px 20px rgba(0,0,0,0.05)',
+        transition: 'transform 0.3s',
+        position: 'relative'
+    }}
+        onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-5px)'}
+        onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+    >
+        <div style={{ height: '180px', backgroundColor: '#f9f9f9', position: 'relative' }}>
+            <img src={product.img} alt={product.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        </div>
 
-                <div style={{ padding: '15px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                        <h3 style={{ fontSize: '16px', fontWeight: 'bold', color: '#333', margin: 0, fontFamily: 'Inter, sans-serif' }}>{product.title}</h3>
-                        <span style={{ backgroundColor: '#FFFDD0', color: '#734F96', padding: '4px 8px', borderRadius: '8px', fontSize: '11px', fontWeight: '600', fontFamily: 'Inter, sans-serif' }}>
-                            ${product.price ? product.price.toFixed(2) : '0.00'}
-                        </span>
-                    </div>
-                    <p style={{ color: '#888', fontSize: '12px', marginBottom: '15px', height: '36px', overflow: 'hidden', lineHeight: '1.5', fontFamily: 'Inter, sans-serif' }}>
-                        {product.description || 'No description available.'}
-                    </p>
-
-                    <div style={{ display: 'flex', gap: '15px' }}>
-                        <Link href={`/admin/products/edit/${product.id}`} style={{
-                            flex: 1,
-                            backgroundColor: '#fff',
-                            color: '#363740',
-                            textAlign: 'center',
-                            padding: '10px',
-                            borderRadius: '50px',
-                            textDecoration: 'none',
-                            fontSize: '15px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: '8px',
-                            fontFamily: 'Inter, sans-serif',
-                            border: '1px solid #dde2ff',
-                            transition: 'all 0.2s ease',
-                            fontWeight: 500
-                        }}
-                            onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#f0f0f0'; }}
-                            onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#fff'; }}
-                        >
-                            <EditIcon /> Edit
-                        </Link>
-                        <button onClick={() => handleDelete(product.id)} style={{
-                            flex: 1,
-                            backgroundColor: '#FFF0F1',
-                            color: '#D1293D',
-                            border: 'none',
-                            padding: '10px',
-                            borderRadius: '50px',
-                            cursor: 'pointer',
-                            fontSize: '15px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: '8px',
-                            fontFamily: 'Inter, sans-serif',
-                            fontWeight: 500,
-                            transition: 'all 0.2s ease'
-                        }}
-                            onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#FFE5E7'; }}
-                            onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#FFF0F1'; }}
-                        >
-                            <TrashIcon /> Delete
-                        </button>
-                    </div>
-                </div>
+        <div style={{ padding: '15px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+                <h3 style={{ fontSize: '16px', fontWeight: 'bold', color: '#333', margin: 0, fontFamily: 'Inter, sans-serif' }}>{product.title}</h3>
+                <span style={{ backgroundColor: '#FFFDD0', color: '#734F96', padding: '4px 8px', borderRadius: '8px', fontSize: '11px', fontWeight: '600', fontFamily: 'Inter, sans-serif' }}>
+                    ${product.price ? product.price.toFixed(2) : '0.00'}
+                </span>
             </div>
-            );
+            <p style={{ color: '#888', fontSize: '12px', marginBottom: '15px', height: '36px', overflow: 'hidden', lineHeight: '1.5', fontFamily: 'Inter, sans-serif' }}>
+                {product.description || 'No description available.'}
+            </p>
+
+            <div style={{ display: 'flex', gap: '15px' }}>
+                <Link href={`/admin/products/edit/${product.id}`} style={{
+                    flex: 1,
+                    backgroundColor: '#fff',
+                    color: '#363740',
+                    textAlign: 'center',
+                    padding: '10px',
+                    borderRadius: '50px',
+                    textDecoration: 'none',
+                    fontSize: '15px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    fontFamily: 'Inter, sans-serif',
+                    border: '1px solid #dde2ff',
+                    transition: 'all 0.2s ease',
+                    fontWeight: 500
+                }}
+                    onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#f0f0f0'; }}
+                    onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#fff'; }}
+                >
+                    <EditIcon /> Edit
+                </Link>
+                <button onClick={() => handleDelete(product.id)} style={{
+                    flex: 1,
+                    backgroundColor: '#FFF0F1',
+                    color: '#D1293D',
+                    border: 'none',
+                    padding: '10px',
+                    borderRadius: '50px',
+                    cursor: 'pointer',
+                    fontSize: '15px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: 500,
+                    transition: 'all 0.2s ease'
+                }}
+                    onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#FFE5E7'; }}
+                    onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#FFF0F1'; }}
+                >
+                    <TrashIcon /> Delete
+                </button>
+            </div>
+        </div>
+    </div>
+);
