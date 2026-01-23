@@ -34,7 +34,7 @@ const Testimonials = () => {
                     initialSlide: 1
                 }
             },
-               {
+            {
                 breakpoint: 425,
                 settings: {
                     slidesToShow: 1,
