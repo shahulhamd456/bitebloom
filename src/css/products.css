@@ -12,6 +12,13 @@
     line-height: 1.2;
 }
 
+@media screen and (max-width: 768px) {
+    .product-title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+}
+
 .ppp {
     text-align: center;
     max-width: 600px;

@@ -13,6 +13,8 @@ img {
 body {
     font-family: "Inter", sans-serif !important;
     background-color: #FFFDD0 !important;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
 }
 
 h1,
@@ -24,6 +26,16 @@ h2 {
 h1 {
     font-size: 65px !important;
     line-height: 1.0 !important;
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 42px !important;
+    }
+
+    .product-title {
+        font-size: 42px !important;
+    }
 }
 
 h4 {
