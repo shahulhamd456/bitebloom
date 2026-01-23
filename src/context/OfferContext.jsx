@@ -2,7 +2,12 @@
 
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-const OfferContext = createContext();
+const OfferContext = createContext({
+    offers: [],
+    addOffer: () => { },
+    deleteOffer: () => { },
+    updateOffer: () => { }
+});
 
 export const OfferProvider = ({ children }) => {
     // Initial static data to match current website content
