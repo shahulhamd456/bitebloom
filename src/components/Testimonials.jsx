@@ -33,6 +33,15 @@ const Testimonials = () => {
                     slidesToScroll: 1,
                     initialSlide: 1
                 }
+            },
+               {
+                breakpoint: 425,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: false, // Critical: Disable centerMode on mobile
+                    slidesToScroll: 1,
+                    initialSlide: 1
+                }
             }
         ]
     };
