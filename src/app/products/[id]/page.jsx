@@ -4,9 +4,11 @@ import React, { useEffect, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useCart } from '../../../context/CartContext';
 import { useProducts } from '../../../context/ProductContext';
+import Link from 'next/link'; // Added for sidebar navigation
 import { ShoppingBag, CreditCard } from 'lucide-react';
 import gsap from 'gsap';
 import '../../../css/product-detail.css';
+import '../../../css/shop.css'; // Import shop styles for layout and sidebar
 
 const ProductDetail = () => {
     const { products } = useProducts();
@@ -53,10 +55,82 @@ const ProductDetail = () => {
         for (let i = 0; i < quantity; i++) addToCart(product);
     };
 
+    const [showMobileFilters, setShowMobileFilters] = React.useState(false);
+
+    // Categories for sidebar
+    const categories = ["Cupcakes", "Artisan Breads", "Cookies", "Gluten Free", "Pastries"];
+
     return (
         <div className="product-detail">
-            <div className="container">
-                <div className="product-detail-container" ref={containerRef}>
+            <header className="shop-header-bg">
+                <div className="container">
+                    <div style={{ textAlign: 'center' }}>
+                        <h1 className="shop-title">Shop</h1>
+                        <p style={{ color: '#666' }}>Home / Shop / {product.title}</p>
+                    </div>
+                </div>
+            </header>
+
+            <div className="container" style={{ marginTop: '50px' }}>
+                {/* Mobile Navigation Toggle */}
+                <button
+                    className="d-lg-none button"
+                    onClick={() => setShowMobileFilters(!showMobileFilters)}
+                    style={{ width: '100%', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
+                >
+                    {showMobileFilters ? 'Hide Menu' : 'Show Menu'}
+                </button>
+
+                {/* Mobile Overlay Backdrop */}
+                <div
+                    className={`shop-overlay ${showMobileFilters ? 'active' : ''}`}
+                    onClick={() => setShowMobileFilters(false)}
+                ></div>
+
+                {/* Sidebar - Mobile Only */}
+                <aside className={`shop-sidebar ${showMobileFilters ? 'active' : ''} d-lg-none`}>
+                    {/* Close Button Mobile */}
+                    <div className="d-lg-none" style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '20px' }}>
+                        <button onClick={() => setShowMobileFilters(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#333' }}>
+                            {/* Close Icon SVG */}
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
+
+                    {/* Navigation Links (Mobile Only) */}
+                    <div className="filter-section">
+                        <h3 className="filter-title">Menu</h3>
+                        <ul className="category-list">
+                            <li className="category-item"><Link href="/" className="category-label" style={{ textDecoration: 'none' }}>Home</Link></li>
+                            <li className="category-item"><Link href="/offers" className="category-label" style={{ textDecoration: 'none' }}>Offers</Link></li>
+                            <li className="category-item"><Link href="/custom-orders" className="category-label" style={{ textDecoration: 'none' }}>Custom</Link></li>
+                            <li className="category-item"><Link href="/gallery" className="category-label" style={{ textDecoration: 'none' }}>Gallery</Link></li>
+                            <li className="category-item"><Link href="/about" className="category-label" style={{ textDecoration: 'none' }}>About</Link></li>
+                            <li className="category-item"><Link href="/contact" className="category-label" style={{ textDecoration: 'none' }}>Contact</Link></li>
+                        </ul>
+                        <div style={{ margin: '20px 0', borderBottom: '1px solid #eee' }}></div>
+                    </div>
+
+                    <div className="filter-section">
+                        <h3 className="filter-title">Categories</h3>
+                        <ul className="category-list">
+                            <li className="category-item">
+                                <Link href="/products" className="category-label" style={{ textDecoration: 'none' }}>
+                                    All Products
+                                </Link>
+                            </li>
+                            {categories.map((cat, index) => (
+                                <li key={index} className="category-item">
+                                    <Link href={`/products?category=${encodeURIComponent(cat)}`} className="category-label" style={{ textDecoration: 'none' }}>
+                                        {cat}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </aside>
+
+                <div className="product-detail-container" ref={containerRef} style={{ margin: 0, width: '100%' }}>
                     <div className="product-image-col">
                         <div className="product-image-backdrop"></div>
                         <div className="product-image-container">

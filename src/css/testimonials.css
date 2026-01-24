@@ -1,3 +1,9 @@
+.testimonials-section {
+    padding: var(--section-padding);
+    background-color: var(--color-cream);
+    /* Ensure bg matches */
+}
+
 .clcon {
     display: flex;
     align-items: center;
@@ -118,5 +124,9 @@
     .next-arrow svg {
         height: 24px;
         width: 12px;
+    }
+
+    .testimonials-section {
+        padding: var(--section-padding-mobile) !important;
     }
 }

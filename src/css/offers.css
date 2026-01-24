@@ -1,3 +1,7 @@
+.Offers {
+    padding: var(--section-padding);
+}
+
 .offer-card {
     background-color: #FFFDD0;
     border: 2px solid #DF7E5D;
@@ -99,17 +103,17 @@
     }
 
     .offer-card {
-        padding: 20px;
+        padding: 20px !important;
     }
 
     .offer-card-img {
-        width: 150px;
-        right: -20px;
+        width: 150px !important;
+        right: -20px !important;
     }
 
     .offer-card-img-rotate {
-        width: 150px;
-        right: -25px;
+        width: 150px !important;
+        right: -25px !important;
     }
 
     .offer-title {
@@ -118,5 +122,9 @@
 
     .ph5 {
         font-size: 18px !important;
+    }
+
+    .Offers {
+        padding: var(--section-padding-mobile) !important;
     }
 }

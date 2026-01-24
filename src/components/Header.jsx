@@ -13,6 +13,28 @@ const Header = () => {
     const { toggleCart, cartItems } = useCart();
     const { products } = useProducts();
 
+    // Scroll Logic
+    // Scroll Logic
+    const [isVisible, setIsVisible] = useState(true);
+    const lastScrollY = useRef(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+                setIsVisible(false);
+            } else {
+                setIsVisible(true);
+            }
+
+            lastScrollY.current = currentScrollY;
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     // Router hooks
     const pathname = usePathname();
     const router = useRouter();
@@ -106,7 +128,15 @@ const Header = () => {
         gsap.fromTo(
             headerRef.current,
             { opacity: 0, x: -100 },
-            { opacity: 1, x: 0, duration: 1, ease: "power2.out" }
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: "power2.out",
+                onComplete: () => {
+                    gsap.set(headerRef.current, { clearProps: "all" });
+                }
+            }
         );
     }, []);
 
@@ -115,7 +145,7 @@ const Header = () => {
     const isActive = (path) => pathname === path ? 'active' : '';
 
     return (
-        <header ref={headerRef}>
+        <header ref={headerRef} className={!isVisible ? 'header-hidden' : ''}>
             <div className="container">
                 <div className="row">
                     <nav className="navbar navbar-expand-lg ">

@@ -48,7 +48,7 @@ const OfferSection = () => {
     return (
         <section className="Offers" ref={sectionRef}>
             <div className="container">
-                <div className="herotxt" style={{ margin: "auto", textAlign: "center", marginBottom: "40px", maxWidth: "100%" }}>
+                <div className="herotxt" style={{ margin: "auto", textAlign: "center", maxWidth: "100%" }}>
                     <h1 data-aos="flip-down" data-aos-duration="500">Special Offers</h1>
                     <p className="ppp">Don't miss out on our exclusive daily deals!</p>
                 </div>

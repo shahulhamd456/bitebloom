@@ -1,20 +1,83 @@
 .hero {
-    padding: 60px 0;
+    padding: var(--section-padding);
+    background-color: var(--color-cream);
 }
 
 .herotxt {
     height: 100%;
     padding: 20px 0;
     align-items: center;
-    max-width: 442px;
+    max-width: 480px;
 }
 
-.herotxt p {
-    margin-top: 30px;
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 80px;
+    color: var(--color-accent);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px rgba(223, 126, 93, 0.1);
+}
+
+.hero-text {
+    font-size: 18px;
+    color: #5A5A5A;
+    line-height: 1.6;
     margin-bottom: 40px;
 }
 
-.heropic img {
+.hero-btn {
+    background-color: var(--color-accent);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(223, 126, 93, 0.3);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.hero-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(223, 126, 93, 0.4);
+    background-color: #d16d4d;
+    /* Slightly darker on hover */
+}
+
+.hero-image-box {
+    position: relative;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 5px solid white;
+    min-height: 400px;
+    transition: all 0.5s ease;
+}
+
+.hero-image-box:hover {
+    border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+    transform: scale(1.02);
+}
+
+.hero-image-box img {
     width: 100%;
-    border-radius: 30px;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@media screen and (max-width: 576px) {
+    .hero {
+        padding: var(--section-padding-mobile) !important;
+    }
+
+    .hero-title {
+        font-size: 50px;
+    }
 }

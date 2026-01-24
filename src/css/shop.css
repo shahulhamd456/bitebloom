@@ -1,15 +1,19 @@
 .shop-page {
-    padding: 120px 0 80px;
+    padding: 100px 0 80px;
+    /* Safe reduced padding (was 120px) */
     background-color: #FFFDD0;
     /* Light background from reference */
     font-family: 'Inter', sans-serif;
 }
 
 .shop-header {
-    background-color: #FFF;
-    padding: 40px 0;
+    background-color: transparent;
+    /* Seamless blend */
+    padding: 20px 0;
+    /* Reduced padding */
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    /* Reduced gap */
 }
 
 .shop-title {
@@ -20,18 +24,57 @@
 }
 
 .shop-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
+    display: flex;
+    flex-direction: row;
+    /* Ensure standard Row order */
     gap: 40px;
+    align-items: start;
+    /* Ensure sticky sidebar works correctly */
+    position: relative;
 }
 
 /* Sidebar Styles */
 .shop-sidebar {
-    background: transparent;
+    background: #fff;
+    /* White bg for safety */
     position: sticky;
-    top: 100px;
-    /* Adjust based on your header height */
+    top: 120px;
     height: fit-content;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    z-index: 100;
+    /* High z-index to stay on top if needed, or interact correctly */
+    width: 280px;
+    /* Fixed width */
+    min-width: 280px;
+    /* Prevent shrinking */
+    flex-shrink: 0;
+    padding: 25px;
+    /* Premium padding */
+    border-radius: 15px;
+    /* Rounded corners */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    /* Soft shadow */
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    /* Subtle border */
+}
+
+/* Ensure Main Content behaves */
+main {
+    flex-grow: 1;
+    min-width: 0;
+    /* Prevent flex blowout */
+    width: 100%;
+}
+
+/* Scrollbar styling for sidebar */
+.shop-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.shop-sidebar::-webkit-scrollbar-thumb {
+    background-color: #DF7E5D;
+    border-radius: 4px;
 }
 
 .filter-section {
@@ -135,8 +178,9 @@
 }
 
 .custom-dropdown-trigger:hover {
-    border-color: #DF7E5D;
-    box-shadow: 0 6px 16px rgba(223, 126, 93, 0.15);
+    border-color: #ddd;
+    /* Neutral gray instead of red/orange */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
 }
 
 .custom-dropdown-menu {
@@ -409,7 +453,7 @@
     }
 
     .shop-layout {
-        grid-template-columns: 1fr;
+        /* grid-template-columns: 1fr;  Removed as this is a flex container */
         gap: 30px;
     }
 
@@ -420,7 +464,7 @@
         height: 100vh;
         width: 280px;
         background: #fff;
-        z-index: 1050;
+        z-index: 10001;
         padding: 30px;
         overflow-y: auto;
         transform: translateX(-100%);
@@ -443,7 +487,7 @@
         right: 0;
         bottom: 0;
         background: rgba(0, 0, 0, 0.5);
-        z-index: 1040;
+        z-index: 10000;
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
@@ -486,7 +530,11 @@
         font-size: 16px;
     }
 
+    .shop-card {
+        padding: 10px;
+    }
+
     .card-image-wrapper {
-        height: 200px;
+        height: 160px;
     }
 }

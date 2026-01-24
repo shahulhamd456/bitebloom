@@ -25,7 +25,7 @@ const Products = ({ hideHeader = false }) => {
                 )}
                 <div className="row g-4"> {/* Added g-4 for better spacing */}
                     {products.map((product) => (
-                        <div className="col-md-6 col-lg-3" key={product.id}>
+                        <div className="col-md-6 col-lg-3 col-6" key={product.id}>
                             <div className="product-card">
                                 <Link href={`/products/${product.id}`} className="img-wrapper">
                                     <img src={product.img} alt={product.title} />

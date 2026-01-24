@@ -21,26 +21,25 @@ const Testimonials = () => {
             {
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                     centerMode: true,
+                    slidesToScroll: 1
                 }
             },
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 1,
-                    centerMode: false, // Critical: Disable centerMode on mobile
-                    slidesToScroll: 1,
-                    initialSlide: 1
+                    slidesToShow: 2,
+                    centerMode: false,
+                    slidesToScroll: 1
                 }
             },
             {
-                breakpoint: 425,
+                breakpoint: 576, // Standard mobile breakpoint
                 settings: {
                     slidesToShow: 1,
-                    centerMode: false, // Critical: Disable centerMode on mobile
-                    slidesToScroll: 1,
-                    initialSlide: 1
+                    centerMode: false,
+                    slidesToScroll: 1
                 }
             }
         ]
@@ -63,7 +62,7 @@ const Testimonials = () => {
     };
 
     return (
-        <section className="Products">
+        <section className="testimonials-section">
             <div className="container">
                 <h1 data-aos="flip-down" data-aos-duration="500" style={{ textAlign: 'center' }}>Client's Review</h1>
                 <p className="ppp">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>

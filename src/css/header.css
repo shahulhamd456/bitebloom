@@ -1,15 +1,37 @@
 header {
-    position: relative;
-    z-index: 9999;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-bottom: 30px;
+    pointer-events: none;
+    /* Let clicks pass through empty space */
+    transition: transform 0.3s ease-in-out;
+}
+
+.header-hidden {
+    transform: translateY(-150%);
 }
 
 .navbar-expand-lg {
-    background-color: #DF7E5D;
+    background-color: rgba(223, 126, 93, 0.85);
+    /* Semi-transparent accent */
     border-radius: 50px;
     color: #fff !important;
-    padding: 10px 20px !important;
+    padding: 10px 25px !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(223, 126, 93, 0.2);
+    pointer-events: auto;
+    /* Re-enable clicks on navbar */
+    transition: all 0.3s ease;
+}
+
+.navbar-expand-lg:hover {
+    background-color: rgba(223, 126, 93, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(223, 126, 93, 0.3);
 }
 
 .navbar-expand-lg a {

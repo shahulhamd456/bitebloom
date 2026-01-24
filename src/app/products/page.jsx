@@ -2,14 +2,20 @@
 
 import React, { useState } from 'react';
 import { useProducts } from '../../context/ProductContext';
+import { useSearchParams } from 'next/navigation';
 import { useCart } from '../../context/CartContext';
 import Link from 'next/link';
-import { Heart, Eye, ShoppingBag, Star, ChevronRight, X } from 'lucide-react';
+import { Heart, Eye, ShoppingBag, Star, ChevronRight, X, Filter } from 'lucide-react';
 import '../../css/shop.css';
 
 const Products = () => {
     const { products, categories } = useProducts();
     const { addToCart } = useCart();
+
+    // URL Params Logic
+    const searchParams = useSearchParams();
+    const categoryParam = searchParams.get('category');
+
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [sortOption, setSortOption] = useState('Default Sorting');
     const [maxPrice, setMaxPrice] = useState(50);
@@ -18,6 +24,19 @@ const Products = () => {
     const [hoverRating, setHoverRating] = useState(0);
     const [isSortOpen, setIsSortOpen] = useState(false);
     const [showMobileFilters, setShowMobileFilters] = useState(false);
+
+    // Sync URL param with state on mount or param change
+    React.useEffect(() => {
+        if (categoryParam) {
+            setSelectedCategories([categoryParam]);
+        } else {
+            // Optional: Clear categories if no param? Or keep state? 
+            // Better to only set if param exists to avoid wiping user manual selection if they navigate internally without params.
+            // But for deep links, we want to respect the param.
+            // Let's assume if param is missing, we don't force clear unless we want "All Products" link to work.
+            // For now, if no param, we leave it alone (or could set to []).
+        }
+    }, [categoryParam]);
 
     const handleCategoryChange = (category) => {
         if (selectedCategories.includes(category)) {
@@ -99,14 +118,7 @@ const Products = () => {
 
             <div className="container">
                 <div className="shop-layout">
-                    {/* Mobile Filter Toggle */}
-                    <button
-                        className="d-lg-none button"
-                        onClick={() => setShowMobileFilters(!showMobileFilters)}
-                        style={{ width: '100%', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
-                    >
-                        {showMobileFilters ? 'Hide Filters' : 'Show Filters'}
-                    </button>
+                    {/* Mobile Filter Toggle REMOVED */}
 
                     {/* Mobile Overlay Backdrop */}
                     <div
@@ -122,6 +134,10 @@ const Products = () => {
                                 <X size={24} />
                             </button>
                         </div>
+
+                        {/* Navigation Links REMOVED */}
+
+
                         <div className="filter-section">
                             <h3 className="filter-title">By Categories</h3>
                             <ul className="category-list">
@@ -214,6 +230,13 @@ const Products = () => {
                             </div>
 
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <button
+                                    className="custom-dropdown-trigger d-lg-none"
+                                    onClick={() => setShowMobileFilters(!showMobileFilters)}
+                                    style={{ padding: '10px 15px', gap: '8px' }}
+                                >
+                                    Filter <Filter size={16} />
+                                </button>
                                 <span style={{ fontSize: '14px', color: '#666' }}>Sort by:</span>
 
                                 <div className="custom-dropdown" style={{ position: 'relative' }}>
@@ -280,7 +303,7 @@ const Products = () => {
                                                     const oldPrice = hasDiscount ? (product.price * 1.3).toFixed(2) : null;
 
                                                     return (
-                                                        <div className="col-lg-4 col-md-6" key={product.id}>
+                                                        <div className="col-xl-4 col-lg-6 col-md-6 col-6" key={product.id}>
                                                             <div className="shop-card">
                                                                 <div className="card-image-wrapper">
                                                                     <Link href={`/products/${product.id}`}>
@@ -338,7 +361,7 @@ const Products = () => {
                                     const oldPrice = hasDiscount ? (product.price * 1.3).toFixed(2) : null;
 
                                     return (
-                                        <div className="col-lg-4 col-md-6" key={product.id}>
+                                        <div className="col-xl-4 col-lg-6 col-md-6 col-6" key={product.id}>
                                             <div className="shop-card">
                                                 <div className="card-image-wrapper">
                                                     <Link href={`/products/${product.id}`}>

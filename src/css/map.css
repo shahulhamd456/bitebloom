@@ -1,5 +1,5 @@
 .map {
-    padding: 50px 0;
+    padding: var(--section-padding);
 }
 
 .purple {
@@ -100,5 +100,15 @@
     .purptxt h2 {
         font-size: 40px !important;
         /* Responsive adjustment likely needed */
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .map1 iframe {
+        height: 320px !important;
+    }
+
+    .map {
+        padding: var(--section-padding-mobile) !important;
     }
 }
