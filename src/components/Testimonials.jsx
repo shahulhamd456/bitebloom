@@ -28,7 +28,7 @@ const Testimonials = () => {
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 1,
                     centerMode: false, // Critical: Disable centerMode on mobile
                     slidesToScroll: 1,
                     initialSlide: 1

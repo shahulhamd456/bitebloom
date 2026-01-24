@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import AdminSearch from '../../components/AdminSearch';
+import '../../css/admin.css';
 
 // Simple SVG Icons
 const DashboardIcon = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>;
@@ -16,6 +17,7 @@ export default function AdminLayout({ children }) {
     const { user, logout, loading } = useAuth();
     const router = useRouter();
     const pathname = usePathname();
+    const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
 
     useEffect(() => {
         if (!loading) {
@@ -25,30 +27,36 @@ export default function AdminLayout({ children }) {
         }
     }, [user, loading, router]);
 
+    // Close sidebar on route change
+    useEffect(() => {
+        setIsSidebarOpen(false);
+    }, [pathname]);
+
     if (loading) return null;
     if (!user || user.role !== 'admin') return null;
 
     return (
         <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#F5F6FA', fontFamily: 'Inter, sans-serif' }}>
+            {/* Mobile Overlay */}
+            <div
+                className={`sidebar-overlay ${isSidebarOpen ? 'show' : ''}`}
+                onClick={() => setIsSidebarOpen(false)}
+            ></div>
+
             {/* Sidebar */}
-            <aside style={{
-                width: '280px',
-                backgroundColor: '#ffffff',
-                borderRight: '1px solid #e0e0e0',
-                display: 'flex',
-                flexDirection: 'column',
-                position: 'sticky',
-                top: 0,
-                height: '100vh',
-                overflowY: 'auto',
-                padding: '30px'
-            }}>
-                {/* Brand */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '50px' }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', backgroundColor: '#734F96', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '20px' }}>B</div>
-                    <div style={{ fontSize: '24px', fontFamily: '"Cookie", cursive', color: '#333' }}>
-                        Bite Bloom
+            <aside className={`admin-sidebar ${isSidebarOpen ? 'open' : ''}`}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+                    {/* Brand */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <div style={{ width: '40px', height: '40px', borderRadius: '10px', backgroundColor: '#734F96', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '20px' }}>B</div>
+                        <div style={{ fontSize: '24px', fontFamily: '"Cookie", cursive', color: '#333' }}>
+                            Bite Bloom
+                        </div>
                     </div>
+                    {/* Close Button (Mobile Only) */}
+                    <button className="d-lg-none border-0 bg-transparent text-muted" onClick={() => setIsSidebarOpen(false)}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
                 </div>
 
                 {/* Menu */}
@@ -85,18 +93,26 @@ export default function AdminLayout({ children }) {
             </aside>
 
             {/* Main Content Area */}
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%' }}>
                 {/* Header */}
-                <header style={{ padding: '30px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#F5F6FA' }}>
-                    <div>
-                        <h1 style={{ fontSize: '24px', fontWeight: 'bold', color: '#1A1A1A', margin: 0, fontFamily: 'Inter, sans-serif' }}>Dashboard</h1>
-                        <p style={{ color: '#666', margin: 0, fontSize: '14px', marginTop: '5px' }}>Here is your daily store overview</p>
+                <header style={{ padding: '20px 30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#F5F6FA', borderBottom: '1px solid #eee' }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        {/* Mobile Toggle */}
+                        <button className="admin-toggle-btn" onClick={() => setIsSidebarOpen(true)}>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                        </button>
+                        <div>
+                            <h1 style={{ fontSize: '24px', fontWeight: 'bold', color: '#1A1A1A', margin: 0, fontFamily: 'Inter, sans-serif' }}>Dashboard</h1>
+                            <p style={{ color: '#666', margin: 0, fontSize: '14px', marginTop: '5px' }} className="d-none d-md-block">Here is your daily store overview</p>
+                        </div>
                     </div>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                         {/* Search Feature: Wrapped in Suspense */}
                         <Suspense fallback={<div style={{ width: '45px', height: '45px', background: '#fff', borderRadius: '50%' }}></div>}>
-                            <AdminSearch />
+                            <div className="d-none d-md-block">
+                                <AdminSearch />
+                            </div>
                         </Suspense>
 
                         {/* Notifications */}
@@ -106,7 +122,7 @@ export default function AdminLayout({ children }) {
 
                         {/* Profile */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                            <div style={{ textAlign: 'right' }}>
+                            <div style={{ textAlign: 'right' }} className="d-none d-md-block">
                                 <div style={{ fontSize: '14px', fontWeight: '600', color: '#333' }}>Admin User</div>
                                 <div style={{ fontSize: '11px', color: '#999' }}>Store Manager</div>
                             </div>
@@ -115,7 +131,7 @@ export default function AdminLayout({ children }) {
                     </div>
                 </header>
 
-                <main style={{ flex: 1, padding: '0 40px 40px' }}>
+                <main style={{ flex: 1, padding: '20px 30px' }}>
                     {children}
                 </main>
             </div>

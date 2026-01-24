@@ -108,8 +108,20 @@ const Products = () => {
                         {showMobileFilters ? 'Hide Filters' : 'Show Filters'}
                     </button>
 
+                    {/* Mobile Overlay Backdrop */}
+                    <div
+                        className={`shop-overlay ${showMobileFilters ? 'active' : ''}`}
+                        onClick={() => setShowMobileFilters(false)}
+                    ></div>
+
                     {/* Sidebar */}
-                    <aside className={`shop-sidebar ${showMobileFilters ? 'd-block' : 'd-none d-lg-block'}`}>
+                    <aside className={`shop-sidebar ${showMobileFilters ? 'active' : ''} d-lg-block`}>
+                        {/* Close Button Mobile */}
+                        <div className="d-lg-none" style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '20px' }}>
+                            <button onClick={() => setShowMobileFilters(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#333' }}>
+                                <X size={24} />
+                            </button>
+                        </div>
                         <div className="filter-section">
                             <h3 className="filter-title">By Categories</h3>
                             <ul className="category-list">
