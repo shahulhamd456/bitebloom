@@ -107,14 +107,14 @@ const Products = () => {
 
     return (
         <div className="shop-page">
-            <header className="shop-header-bg">
+            <div className="shop-header-bg">
                 <div className="container">
                     <div style={{ textAlign: 'center' }}>
                         <h1 className="shop-title">Shop</h1>
-                        <p style={{ color: '#666' }}>Home / Shop</p>
+                       
                     </div>
                 </div>
-            </header>
+            </div>
 
             <div className="container">
                 <div className="shop-layout">
@@ -139,7 +139,7 @@ const Products = () => {
 
 
                         <div className="filter-section">
-                            <h3 className="filter-title">By Categories</h3>
+                            <h3 className="filter-title" >By Categories</h3>
                             <ul className="category-list">
                                 {categories.map((cat, index) => (
                                     <li key={index} className="category-item">

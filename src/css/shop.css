@@ -1,5 +1,5 @@
 .shop-page {
-    padding: 100px 0 80px;
+    padding: 50px 0 50px;
     /* Safe reduced padding (was 120px) */
     background-color: #FFFDD0;
     /* Light background from reference */
@@ -20,7 +20,7 @@
     font-family: "Cookie", cursive;
     font-size: 60px;
     color: #1E1E1E;
-    margin-bottom: 10px;
+    margin-bottom: 30px !important;
 }
 
 .shop-layout {
@@ -82,7 +82,7 @@ main {
 }
 
 .filter-title {
-    font-size: 18px;
+    font-size: 23px;
     font-weight: 700;
     margin-bottom: 20px;
     color: #1E1E1E;
@@ -449,7 +449,7 @@ main {
 
 @media (max-width: 991px) {
     .shop-page {
-        padding: 80px 0 40px;
+        padding: 50px 0 40px;
     }
 
     .shop-layout {
@@ -500,6 +500,7 @@ main {
 
     .shop-title {
         font-size: 45px;
+        margin-bottom: 20px;
     }
 
     .shop-controls {
@@ -537,4 +538,6 @@ main {
     .card-image-wrapper {
         height: 160px;
     }
+    .filter-title {
+    font-size: 18px !important;}
 }

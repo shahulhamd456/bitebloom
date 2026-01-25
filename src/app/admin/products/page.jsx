@@ -68,7 +68,7 @@ export default function AdminProductsPage() {
         <div style={{ paddingBottom: '50px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
                 <h1 style={{ fontSize: '42px', color: '#DF7E5D', fontFamily: '"Cookie", cursive' }}>All Products</h1>
-                <Link href="/admin/products/add" style={{
+                <Link href="/admin/products/add" className="sticky-add-btn" style={{
                     backgroundColor: '#DF7E5D',
                     color: 'white',
                     padding: '10px 20px',
@@ -100,7 +100,7 @@ export default function AdminProductsPage() {
                         flexShrink: 0,
                         position: 'relative',
                         display: showMobileFilters ? 'block' : 'none'
-                    }} className="d-lg-block">
+                    }} className="d-lg-block admin-filters-sidebar">
                         <div style={{ marginBottom: '30px', backgroundColor: 'white', padding: '20px', borderRadius: '15px', boxShadow: '0 5px 20px rgba(0,0,0,0.03)' }}>
                             <h3 style={{ fontSize: '18px', marginBottom: '15px', color: '#333', fontFamily: 'Inter, sans-serif' }}>Filter by Category</h3>
                             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>

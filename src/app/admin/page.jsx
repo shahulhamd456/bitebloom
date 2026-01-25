@@ -74,7 +74,7 @@ export default function AdminDashboard() {
                     {/* Row 2: Customer Habits Chart */}
                     <div style={{ backgroundColor: 'white', borderRadius: '24px', padding: '30px', boxShadow: '0 5px 20px rgba(0,0,0,0.02)', overflow: 'hidden' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '30px', flexWrap: 'wrap', gap: '10px' }}>
-                            <h3 style={{ margin: 0, fontSize: '18px', color: '#333' }}>Customer Habits</h3>
+                            <h3 style={{ margin: 0, fontSize: '22px', color: '#333' }}>Customer Habits</h3>
                             <select style={{ border: 'none', color: '#999', fontSize: '14px', outline: 'none', background: '#f5f5f5', padding: '5px 10px', borderRadius: '8px' }}>
                                 <option>This Year</option>
                             </select>
@@ -111,7 +111,7 @@ export default function AdminDashboard() {
 
                     {/* Product Statistics */}
                     <div style={{ backgroundColor: 'white', borderRadius: '24px', padding: '30px', boxShadow: '0 5px 20px rgba(0,0,0,0.02)', height: '100%' }}>
-                        <h3 style={{ margin: '0 0 30px', fontSize: '18px', color: '#333' }}>Product Statistic</h3>
+                        <h3 style={{ margin: '0 0 30px', fontSize: '22px', color: '#333' }}>Product Statistic</h3>
 
                         {/* Donut Chart Mock */}
                         <div style={{ position: 'relative', width: '200px', height: '200px', margin: '0 auto 40px', maxWidth: '100%' }}>

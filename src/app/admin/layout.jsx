@@ -19,6 +19,29 @@ export default function AdminLayout({ children }) {
     const pathname = usePathname();
     const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
 
+    // Scroll Logic for Smart Sticky Helper
+    const [isStickVisible, setIsStickVisible] = React.useState(true);
+    const lastScrollY = React.useRef(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+                // Scrolling DOWN
+                setIsStickVisible(false);
+            } else {
+                // Scrolling UP
+                setIsStickVisible(true);
+            }
+
+            lastScrollY.current = currentScrollY;
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     useEffect(() => {
         if (!loading) {
             if (!user || user.role !== 'admin') {
@@ -95,7 +118,7 @@ export default function AdminLayout({ children }) {
             {/* Main Content Area */}
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%' }}>
                 {/* Header */}
-                <header style={{ padding: '20px 30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#F5F6FA', borderBottom: '1px solid #eee' }}>
+                <div className={`admin-header ${!isStickVisible ? 'header-hidden' : ''}`}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         {/* Mobile Toggle */}
                         <button className="admin-toggle-btn" onClick={() => setIsSidebarOpen(true)}>
@@ -107,10 +130,10 @@ export default function AdminLayout({ children }) {
                         </div>
                     </div>
 
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                    <div className="stick" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                         {/* Search Feature: Wrapped in Suspense */}
                         <Suspense fallback={<div style={{ width: '45px', height: '45px', background: '#fff', borderRadius: '50%' }}></div>}>
-                            <div className="d-none d-md-block">
+                            <div>
                                 <AdminSearch />
                             </div>
                         </Suspense>
@@ -120,16 +143,9 @@ export default function AdminLayout({ children }) {
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
                         </button>
 
-                        {/* Profile */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                            <div style={{ textAlign: 'right' }} className="d-none d-md-block">
-                                <div style={{ fontSize: '14px', fontWeight: '600', color: '#333' }}>Admin User</div>
-                                <div style={{ fontSize: '11px', color: '#999' }}>Store Manager</div>
-                            </div>
-                            <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#DF7E5D', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>A</div>
-                        </div>
+
                     </div>
-                </header>
+                </div>
 
                 <main style={{ flex: 1, padding: '20px 30px' }}>
                     {children}
