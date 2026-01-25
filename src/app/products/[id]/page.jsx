@@ -62,14 +62,14 @@ const ProductDetail = () => {
 
     return (
         <div className="product-detail">
-            <header className="shop-header-bg">
+            <div className="shop-header-bg">
                 <div className="container">
                     <div style={{ textAlign: 'center' }}>
                         <h1 className="shop-title">Shop</h1>
-                        <p style={{ color: '#666' }}>Home / Shop / {product.title}</p>
+
                     </div>
                 </div>
-            </header>
+            </div>
 
             <div className="container" style={{ marginTop: '50px' }}>
                 {/* Mobile Navigation Toggle */}

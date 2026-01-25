@@ -29,6 +29,9 @@ import ClientLayout from '../components/ClientLayout';
 export const metadata = {
     title: 'Bite Bloom',
     description: 'Delicious bakery and treats',
+    icons: {
+        icon: '/asset/logo.svg',
+    },
 }
 
 export const viewport = {
