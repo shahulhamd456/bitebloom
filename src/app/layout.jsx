@@ -13,8 +13,6 @@ import '../css/offers.css';
 import '../css/product-detail.css';
 import '../css/products.css';
 import '../css/shop.css';
-import '../css/slick-theme.css';
-import '../css/slick.css';
 import '../css/testimonials.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';

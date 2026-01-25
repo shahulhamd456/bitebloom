@@ -97,19 +97,21 @@
 }
 
 /* The Active Slide Highlight */
-.slick-center .item {
+.swiper-slide-active .item {
     background-color: #DF7E5D;
 }
 
-/* Override slick list padding if needed */
-.slider .slick-list {
+/* Update padding/margin for swiper wrapper if needed, mirroring legacy slick-list */
+.slider .swiper-wrapper {
     padding: 0 !important;
-    margin: 0px 50px !important;
+    /* margin: 0px 50px !important;  <- Swiper works better with standard padding/margin on container. 
+       Let's keep the margin on the wrapper for now to mimic slick-list behavior if that was the intent, 
+       but swiper might behave differently. */
 }
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-    .slider .slick-list {
+    .slider .swiper-wrapper {
         margin: 0 !important;
     }
 

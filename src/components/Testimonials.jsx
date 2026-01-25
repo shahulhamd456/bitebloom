@@ -1,49 +1,14 @@
 'use client';
 
 import React, { useRef } from 'react';
-import Slider from 'react-slick';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 import '../css/testimonials.css';
 
 const Testimonials = () => {
-    const sliderRef = useRef(null);
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        centerMode: true,
-        centerPadding: '0px',
-        className: 'center',
-        arrows: false,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 3,
-                    centerMode: true,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                    centerMode: false,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 576, // Standard mobile breakpoint
-                settings: {
-                    slidesToShow: 1,
-                    centerMode: false,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
+    const swiperRef = useRef(null);
 
     const reviews = [
         { name: 'Tom Hardly', job: 'Doctor', img: '/asset/r1.png', text: 'Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.' },
@@ -54,11 +19,15 @@ const Testimonials = () => {
     ];
 
     const next = () => {
-        sliderRef.current.slickNext();
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.slideNext();
+        }
     };
 
     const previous = () => {
-        sliderRef.current.slickPrev();
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.slidePrev();
+        }
     };
 
     return (
@@ -68,9 +37,35 @@ const Testimonials = () => {
                 <p className="ppp">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
 
                 <div className="slider" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
-                    <Slider ref={sliderRef} {...settings}>
+                    <Swiper
+                        ref={swiperRef}
+                        modules={[Navigation]}
+                        loop={true}
+                        speed={500}
+                        slidesPerView={1}
+                        spaceBetween={0}
+                        centeredSlides={true}
+                        className="center"
+                        breakpoints={{
+                            576: {
+                                slidesPerView: 1,
+                                centeredSlides: false,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                                centeredSlides: false,
+                            },
+                            1200: {
+                                slidesPerView: 3,
+                                centeredSlides: true,
+                            }
+                        }}
+                        onBeforeInit={(swiper) => {
+                            swiperRef.current = { swiper };
+                        }}
+                    >
                         {reviews.map((review, index) => (
-                            <div key={index}>
+                            <SwiperSlide key={index}>
                                 <div className="item">
                                     <div className="itemtxt">
                                         <div className="clcon">
@@ -83,9 +78,9 @@ const Testimonials = () => {
                                         <p>{review.text}</p>
                                     </div>
                                 </div>
-                            </div>
+                            </SwiperSlide>
                         ))}
-                    </Slider>
+                    </Swiper>
                 </div>
 
                 <div className="arrow">

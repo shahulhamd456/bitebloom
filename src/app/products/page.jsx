@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { Heart, Eye, ShoppingBag, Star, ChevronRight, X, Filter } from 'lucide-react';
 import '../../css/shop.css';
 
-const Products = () => {
+const ProductsContent = () => {
     const { products, categories } = useProducts();
     const { addToCart } = useCart();
 
@@ -111,7 +111,7 @@ const Products = () => {
                 <div className="container">
                     <div style={{ textAlign: 'center' }}>
                         <h1 className="shop-title">Shop</h1>
-                       
+
                     </div>
                 </div>
             </div>
@@ -460,6 +460,14 @@ const Products = () => {
                 </div>
             </div>
         </div>
+    );
+};
+
+const Products = () => {
+    return (
+        <React.Suspense fallback={<div>Loading...</div>}>
+            <ProductsContent />
+        </React.Suspense>
     );
 };
 
