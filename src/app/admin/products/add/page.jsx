@@ -135,8 +135,8 @@ export default function AddProductPage() {
                 flexWrap: 'wrap'
             }}>
                 {/* Left Side: Form Fields */}
-                <div style={{ flex: 1, minWidth: '300px' }}>
-                    <InputGroup
+                <div style={{ flex: 1, minWidth: '250px' }}>
+                    <InputGroup className="sele"
                         label="Product Name"
                         value={formData.title}
                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
@@ -144,7 +144,7 @@ export default function AddProductPage() {
                     />
                     <div style={{ display: 'flex', gap: '20px' }}>
                         <div style={{ flex: 1 }}>
-                            <InputGroup
+                            <InputGroup className="sele"
                                 label="Price ($)"
                                 type="number"
                                 value={formData.price}
@@ -155,7 +155,7 @@ export default function AddProductPage() {
                         <div style={{ flex: 1 }}>
                             <div style={{ marginBottom: '20px' }}>
                                 <label style={{ display: 'block', marginBottom: '8px', color: '#734F96', fontWeight: '600', fontSize: '16px' }}>Category</label>
-                                <select
+                                <select className='sele'
                                     value={isNewCategory ? 'new_cat_option' : formData.category}
                                     onChange={(e) => {
                                         if (e.target.value === 'new_cat_option') {
@@ -264,6 +264,10 @@ export default function AddProductPage() {
                     </div>
                 </div>
             </div>
+
         </div>
+
+
+
     );
 }

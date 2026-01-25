@@ -106,11 +106,12 @@ export default function AddOfferPage() {
                 borderRadius: '30px',
                 padding: '40px',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
-                display: 'flex',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                 gap: '50px',
-                flexWrap: 'wrap'
+                alignItems: 'start'
             }}>
-                <div style={{ flex: 1, minWidth: '300px' }}>
+                <div style={{ minWidth: 0 }}>
                     <InputGroup
                         label="Offer Title (e.g. 50% OFF)"
                         value={formData.title}
@@ -139,7 +140,7 @@ export default function AddOfferPage() {
                     </button>
                 </div>
 
-                <div style={{ width: '350px', minWidth: '300px' }}>
+                <div style={{ minWidth: 0 }}>
                     <label style={{ display: 'block', marginBottom: '15px', color: '#734F96', fontWeight: '600', fontSize: '16px' }}>Offer Image</label>
                     <div style={{
                         border: '2px dashed #DF7E5D',
@@ -151,7 +152,8 @@ export default function AddOfferPage() {
                         alignItems: 'center',
                         backgroundColor: '#FFFDD0',
                         overflow: 'hidden',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        position: 'relative'
                     }} onClick={() => document.getElementById('fileInput').click()}>
 
                         {imagePreview ? (

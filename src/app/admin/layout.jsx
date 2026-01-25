@@ -116,7 +116,7 @@ export default function AdminLayout({ children }) {
             </aside>
 
             {/* Main Content Area */}
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%' }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%', minWidth: 0 }}>
                 {/* Header */}
                 <div className={`admin-header ${!isStickVisible ? 'header-hidden' : ''}`}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>

@@ -11,12 +11,19 @@
     padding-top: 20px;
 }
 
-.we {
-    /* Used for membership title too? Check responsive.css:8 */
-}
+
 
 @media screen and (max-width: 768px) {
     .we {
         font-size: 40px !important;
     }
+}
+
+
+@media screen and (max-width: 425px) {
+    .sele {
+        font-size: 14px !important;
+        padding: 12px 12px !important;
+    }
+
 }
