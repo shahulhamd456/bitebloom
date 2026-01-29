@@ -1,35 +1,11 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-// Helper to get path to the JSON file
-const getFilePath = () => {
-    const __filename = fileURLToPath(import.meta.url);
-    // Navigating up from src/app/api/products/route.js to src/data/products.json
-    // route.js is in src/app/api/products (depth 3 from src)
-    // data is in src/data (depth 1 from src)
-    // So we go up 3 levels (api/products/app) to reach src, then into data
-    // actually process.cwd() is safer in Next.js usually, but let's try strict path resolution
-
-    // Using process.cwd() is robust for runtime reading in Next.js
-    return path.join(process.cwd(), 'src', 'data', 'products.json');
-};
-
-const readData = () => {
-    const filePath = getFilePath();
-    const fileData = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(fileData);
-};
-
-const writeData = (data) => {
-    const filePath = getFilePath();
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-};
+import dbConnect from '../../../lib/mongodb';
+import Product from '../../../models/Product';
 
 export async function GET() {
     try {
-        const products = readData();
+        await dbConnect();
+        const products = await Product.find({}).sort({ _id: -1 }); // Sort by newest (assuming _id timestamp)
         return NextResponse.json(products);
     } catch (error) {
         console.error("Error reading products:", error);
@@ -39,25 +15,18 @@ export async function GET() {
 
 export async function POST(request) {
     try {
+        await dbConnect();
         const newProduct = await request.json();
-        const products = readData();
 
-        // Simple ID generation if not provided
+        // Generate a numeric ID if not provided (Migration strategy)
+        // Ideally, switch to using _id in frontend
         if (!newProduct.id) {
-            const maxId = products.reduce((max, p) => (p.id > max ? p.id : max), 0);
-            newProduct.id = maxId + 1;
+            const lastProduct = await Product.findOne().sort({ id: -1 });
+            newProduct.id = lastProduct ? lastProduct.id + 1 : 1;
         }
 
-        // Add timestamp or defaults if needed
-        const productToAdd = {
-            ...newProduct,
-            rating: newProduct.rating || 0,
-        };
-
-        products.unshift(productToAdd); // Add to beginning like common feed
-        writeData(products);
-
-        return NextResponse.json(productToAdd, { status: 201 });
+        const product = await Product.create(newProduct);
+        return NextResponse.json(product, { status: 201 });
     } catch (error) {
         console.error("Error adding product:", error);
         return NextResponse.json({ error: 'Failed to add product' }, { status: 500 });
@@ -66,6 +35,7 @@ export async function POST(request) {
 
 export async function PUT(request) {
     try {
+        await dbConnect();
         const updatedData = await request.json();
         const { id, ...updates } = updatedData;
 
@@ -73,17 +43,16 @@ export async function PUT(request) {
             return NextResponse.json({ error: 'Product ID is required' }, { status: 400 });
         }
 
-        let products = readData();
-        const index = products.findIndex(p => p.id === id);
+        const product = await Product.findOneAndUpdate({ id: id }, updates, {
+            new: true,
+            runValidators: true,
+        });
 
-        if (index === -1) {
+        if (!product) {
             return NextResponse.json({ error: 'Product not found' }, { status: 404 });
         }
 
-        products[index] = { ...products[index], ...updates };
-        writeData(products);
-
-        return NextResponse.json(products[index]);
+        return NextResponse.json(product);
     } catch (error) {
         return NextResponse.json({ error: 'Failed to update product' }, { status: 500 });
     }
@@ -91,6 +60,7 @@ export async function PUT(request) {
 
 export async function DELETE(request) {
     try {
+        await dbConnect();
         const { searchParams } = new URL(request.url);
         const id = searchParams.get('id');
 
@@ -98,15 +68,12 @@ export async function DELETE(request) {
             return NextResponse.json({ error: 'Product ID is required' }, { status: 400 });
         }
 
-        let products = readData();
-        const initialLength = products.length;
-        products = products.filter(p => p.id != id); // loose equality for string/number match
+        const deletedProduct = await Product.findOneAndDelete({ id: id });
 
-        if (products.length === initialLength) {
+        if (!deletedProduct) {
             return NextResponse.json({ error: 'Product not found' }, { status: 404 });
         }
 
-        writeData(products);
         return NextResponse.json({ message: 'Product deleted successfully' });
     } catch (error) {
         return NextResponse.json({ error: 'Failed to delete product' }, { status: 500 });

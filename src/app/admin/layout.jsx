@@ -125,8 +125,18 @@ export default function AdminLayout({ children }) {
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                         </button>
                         <div>
-                            <h1 style={{ fontSize: '24px', fontWeight: 'bold', color: '#1A1A1A', margin: 0, fontFamily: 'Inter, sans-serif' }}>Dashboard</h1>
-                            <p style={{ color: '#666', margin: 0, fontSize: '14px', marginTop: '5px' }} className="d-none d-md-block">Here is your daily store overview</p>
+                            <h1 style={{ fontSize: '24px', fontWeight: 'bold', color: '#1A1A1A', margin: 0, fontFamily: 'Inter, sans-serif' }}>
+                                {pathname === '/admin' ? 'Dashboard' :
+                                    pathname.startsWith('/admin/products') ? 'All Products' :
+                                        pathname.startsWith('/admin/offers') ? 'Offers' :
+                                            'Dashboard'}
+                            </h1>
+                            <p style={{ color: '#666', margin: 0, fontSize: '14px', marginTop: '5px' }} className="d-none d-md-block">
+                                {pathname === '/admin' ? 'Here is your daily store overview' :
+                                    pathname.startsWith('/admin/products') ? 'Manage your product inventory' :
+                                        pathname.startsWith('/admin/offers') ? 'Manage your special offers' :
+                                            'Overview'}
+                            </p>
                         </div>
                     </div>
 
