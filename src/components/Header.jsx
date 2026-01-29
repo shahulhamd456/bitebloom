@@ -4,7 +4,8 @@ import { usePathname, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import { useCart } from '../context/CartContext';
 import { useProducts } from '../context/ProductContext';
-import { ShoppingBag, Search as SearchIcon } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { ShoppingBag, Search as SearchIcon, User, LogOut } from 'lucide-react';
 import '../css/header.css';
 
 const Header = () => {
@@ -12,6 +13,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { toggleCart, cartItems } = useCart();
     const { products } = useProducts();
+    const { user, logout } = useAuth();
 
     // Scroll Logic
     // Scroll Logic
@@ -269,6 +271,19 @@ const Header = () => {
                                     <div className="search"> <Link href="/products" onClick={() => setIsMenuOpen(false)}><img src="/asset/store.svg" alt="" /></Link></div>
 
                                     <div className="search"><Link href="/contact" onClick={() => setIsMenuOpen(false)}><img src="/asset/phone.svg" alt="" /></Link></div>
+
+                                    <div className="search">
+                                        {user ? (
+                                            <button onClick={logout} style={{ border: 'none', background: 'none', padding: 0 }} title="Logout">
+                                                <LogOut color="#DF7E5D" size={24} />
+                                            </button>
+                                        ) : (
+                                            <Link href="/login" onClick={() => setIsMenuOpen(false)}>
+                                                <User color="#DF7E5D" size={24} />
+                                            </Link>
+                                        )}
+                                    </div>
+
                                     <div className="search d-none d-lg-block">
                                         <button onClick={toggleCart} className="cart-btn-premium" style={{ border: 'none', padding: 0 }}>
                                             <ShoppingBag color="#FFFDD0" size={20} />

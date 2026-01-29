@@ -7,39 +7,77 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true); // Add loading user state
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
 
-    // Load user from localStorage on mount
+    // Check if user is logged in via API on mount
     useEffect(() => {
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
-        }
-        setLoading(false); // Set loading to false after check
+        const checkUser = async () => {
+            try {
+                const res = await fetch('/api/auth/me');
+                if (res.ok) {
+                    const data = await res.json();
+                    setUser(data.user);
+                } else {
+                    setUser(null);
+                }
+            } catch (error) {
+                console.error("Failed to fetch user", error);
+                setUser(null);
+            } finally {
+                setLoading(false);
+            }
+        };
+        checkUser();
     }, []);
 
-    const login = (role, password = '') => {
-        if (role === 'admin' && password !== 'admin123') {
-            return { success: false, message: 'Invalid Admin Password' };
-        }
+    const login = async (role, password, email) => {
+        try {
+            // For now, if no email provided in UI (Admin only input password), we might need a default admin email or handle it.
+            // But the Login UI has "Login as User" button with no inputs, and "Login as Admin" with password.
+            // We need to adapt the Login Page to send credentials.
 
-        const newUser = { name: 'Shahul Hameed', role };
-        setUser(newUser);
-        localStorage.setItem('user', JSON.stringify(newUser));
+            // Temporary Logic to bridge the gap:
+            // If it's a "User" role click (no input), we might need to register a guest or ask for login?
+            // The prompt said: "auth for admin and user auth one login page if user redirect to pages if hes is admin redirect to admin page"
+            // It implies real authentication. 
+            // I will assume for "Login as User" we might need a demo login or actual inputs.
+            // Let's UPDATE Request Body to match what we send.
 
-        if (role === 'admin') {
-            router.push('/admin');
-        } else {
-            router.push('/');
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                return { success: false, message: data.error || 'Login failed' };
+            }
+
+            setUser(data.user);
+
+            if (data.user.role === 'admin') {
+                router.push('/admin/dashboard');
+            } else {
+                router.push('/');
+            }
+
+            return { success: true };
+        } catch (error) {
+            return { success: false, message: 'Network error' };
         }
-        return { success: true };
     };
 
-    const logout = () => {
-        setUser(null);
-        localStorage.removeItem('user');
-        router.push('/login');
+    const logout = async () => {
+        try {
+            await fetch('/api/auth/logout', { method: 'POST' });
+            setUser(null);
+            router.push('/login');
+        } catch (error) {
+            console.error("Logout failed", error);
+        }
     };
 
     return (

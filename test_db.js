@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Manual .env parsing
-const envPath = path.resolve(process.cwd(), 'src/data/.env');
+const envPath = path.resolve(process.cwd(), '.env');
 let uri = '';
 
 try {
