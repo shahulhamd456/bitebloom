@@ -28,17 +28,32 @@ export function middleware(request) {
     if (token) {
         const user = parseJwt(token);
 
-        // If user is logged in, prevent access to login/register pages
-        if (authPaths.some(path => pathname.startsWith(path))) {
-            if (user?.role === 'admin') {
+        // If user is logged in
+        if (user?.role === 'admin') {
+            // Admin Logic
+            // If trying to go to User Login or Admin Login -> Redirect to Dashboard
+            if (pathname === '/login' || pathname === '/admin/login') {
                 return NextResponse.redirect(new URL('/admin/dashboard', request.url));
-            } else {
+            }
+        } else {
+            // Normal User Logic
+            // If trying to go to Admin pages (EXCEPT Admin Login) -> Redirect to Home
+            // We verify it's NOT /admin/login (ignoring trailing slash)
+            const isAdminLogin = pathname === '/admin/login' || pathname === '/admin/login/';
+
+            if (pathname.startsWith('/admin') && !isAdminLogin) {
+                return NextResponse.redirect(new URL('/', request.url));
+            }
+
+            // If already logged in and going to /login -> Home
+            if (pathname === '/login') {
                 return NextResponse.redirect(new URL('/', request.url));
             }
         }
 
-        // Protect Admin Routes
-        if (adminPaths.some(path => pathname.startsWith(path))) {
+        // Protect Admin Routes (Secondary check)
+        const isAdminLogin = pathname === '/admin/login' || pathname === '/admin/login/';
+        if (adminPaths.some(path => pathname.startsWith(path)) && !isAdminLogin) {
             if (user?.role !== 'admin') {
                 return NextResponse.redirect(new URL('/', request.url));
             }
@@ -46,15 +61,24 @@ export function middleware(request) {
     } else {
         // If user is NOT logged in
 
-        // Protect Admin Routes - redirect to login
-        if (adminPaths.some(path => pathname.startsWith(path))) {
-            return NextResponse.redirect(new URL('/login', request.url));
+        // Protect Admin Routes
+        // If accessing /admin/login -> Allow
+        if (pathname === '/admin/login') {
+            return NextResponse.next();
         }
+
+        // If accessing other /admin/* -> Redirect to /admin/login
+        if (pathname.startsWith('/admin')) {
+            return NextResponse.redirect(new URL('/admin/login', request.url));
+        }
+
+        // If accessing protected User routes (optional, usually /profile etc)
+        // For now preventing access to nothing else specific for users except what was there.
     }
 
     return NextResponse.next();
 }
 
 export const config = {
-    matcher: ['/admin/:path*', '/login', '/register', '/'],
+    matcher: ['/admin/:path*', '/login', '/register', '/admin/login'],
 };

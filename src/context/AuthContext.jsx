@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
             setUser(data.user);
 
             if (data.user.role === 'admin') {
-                router.push('/admin/dashboard');
+                router.push('/admin');
             } else {
                 router.push('/');
             }

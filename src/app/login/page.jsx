@@ -4,13 +4,22 @@ import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import '../../css/global.css';
 
+import { useSearchParams } from 'next/navigation';
+
 const LoginPage = () => {
     const { login } = useAuth();
-    const [isRegister, setIsRegister] = useState(false);
+    const searchParams = useSearchParams();
+
+    // Check if we should default to register mode and/or admin role
+    const initialRegister = searchParams.get('mode') === 'register';
+    const initialRole = searchParams.get('role') === 'admin' ? 'admin' : 'user';
+
+    const [isRegister, setIsRegister] = useState(initialRegister);
     const [formData, setFormData] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
+        role: initialRole
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -36,22 +45,15 @@ const LoginPage = () => {
 
                 if (!res.ok) throw new Error(data.error || 'Registration failed');
 
-                // Auto login after register or ask to login
-                // For simplicity, let's login immediately
-                const loginRes = await login(null, formData.password, formData.email);
+                // Auto login after register
+                const loginRes = await login('user', formData.password, formData.email);
                 if (!loginRes.success) throw new Error(loginRes.message);
 
             } else {
                 // Login
-                // We pass email/username as the first arg (role param was reused in context, but we should fix context signature properly or just pass it)
-                // The context 'login' function signature I created is: (role, password, email)
-                // But my API Login uses { email, password }.
-                // Let's pass null for role, and let context handle it.
-                // Wait, I updated context to: login = async (role, password, email) 
-                // and context body: JSON.stringify({ email, password })
-                // So I need to pass email as 3rd arg.
-
-                const loginRes = await login(null, formData.password, formData.email || formData.username);
+                // Explicitly pass 'user' role requirement to context if we want to enforce it there, 
+                // AND/OR rely on the context to redirect users to '/'.
+                const loginRes = await login('user', formData.password, formData.email || formData.username);
                 if (!loginRes.success) throw new Error(loginRes.message);
             }
         } catch (err) {
@@ -99,7 +101,7 @@ const LoginPage = () => {
                     )}
 
                     <input
-                        type="email" // Accept email or username if backend supported it, but lets enforce email for consistency 
+                        type="email" // Accept email only
                         name="email"
                         placeholder="Email Address"
                         value={formData.email}
@@ -126,15 +128,28 @@ const LoginPage = () => {
                             width: '100%',
                             borderRadius: '50px',
                             padding: '15px',
-                            backgroundColor: '#734F96',
+                            backgroundColor: '#DF7E5D', // Brand Orange for User
                             color: 'white',
                             border: 'none',
                             cursor: loading ? 'not-allowed' : 'pointer',
-                            opacity: loading ? 0.7 : 1
+                            opacity: loading ? 0.7 : 1,
+                            fontWeight: 'bold'
                         }}
                     >
                         {loading ? 'Processing...' : (isRegister ? 'Register' : 'Login')}
                     </button>
+
+                    {isRegister && (
+                        <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center' }}>
+                            <input
+                                type="checkbox"
+                                id="adminCheck"
+                                checked={formData.role === 'admin'}
+                                onChange={(e) => setFormData({ ...formData, role: e.target.checked ? 'admin' : 'user' })}
+                            />
+                            <label htmlFor="adminCheck" style={{ fontSize: '14px', color: '#666' }}>Register as Admin</label>
+                        </div>
+                    )}
                 </form>
 
                 <p style={{ marginTop: '20px', fontSize: '14px', color: '#666' }}>
