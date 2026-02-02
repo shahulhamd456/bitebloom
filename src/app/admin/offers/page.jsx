@@ -13,6 +13,14 @@ import { useSearchParams } from 'next/navigation';
 // ... (icons)
 
 export default function AdminOffersPage() {
+    return (
+        <React.Suspense fallback={<div>Loading...</div>}>
+            <AdminOffersContent />
+        </React.Suspense>
+    );
+}
+
+function AdminOffersContent() {
     const { offers, deleteOffer } = useOffers();
     const searchParams = useSearchParams();
     const searchQuery = searchParams.get('search')?.toLowerCase() || '';

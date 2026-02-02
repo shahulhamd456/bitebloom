@@ -11,6 +11,14 @@ import { useSearchParams } from 'next/navigation';
 // ... (other imports)
 
 export default function AdminProductsPage() {
+    return (
+        <React.Suspense fallback={<div>Loading...</div>}>
+            <AdminProductsContent />
+        </React.Suspense>
+    );
+}
+
+function AdminProductsContent() {
     const { products, deleteProduct, categories } = useProducts();
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [maxPrice, setMaxPrice] = useState(50);
