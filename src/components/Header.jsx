@@ -273,15 +273,9 @@ const Header = () => {
                                     <div className="search"><Link href="/contact" onClick={() => setIsMenuOpen(false)}><img src="/asset/phone.svg" alt="" /></Link></div>
 
                                     <div className="search">
-                                        {user ? (
-                                            <button onClick={logout} style={{ border: 'none', background: 'none', padding: 0 }} title="Logout">
-                                                <LogOut color="#DF7E5D" size={24} />
-                                            </button>
-                                        ) : (
-                                            <Link href="/login" onClick={() => setIsMenuOpen(false)}>
-                                                <User color="#DF7E5D" size={24} />
-                                            </Link>
-                                        )}
+                                        <Link href="/admin" onClick={() => setIsMenuOpen(false)} title="Admin Dashboard">
+                                            <User color="#DF7E5D" size={24} />
+                                        </Link>
                                     </div>
 
                                     <div className="search d-none d-lg-block">

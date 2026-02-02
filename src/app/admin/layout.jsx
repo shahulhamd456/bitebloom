@@ -24,6 +24,7 @@ export default function AdminLayout({ children }) {
     const lastScrollY = React.useRef(0);
 
     useEffect(() => {
+        // Scroll Logic for Smart Sticky Helper
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
@@ -42,21 +43,12 @@ export default function AdminLayout({ children }) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    useEffect(() => {
-        if (!loading) {
-            if (!user || user.role !== 'admin') {
-                router.push('/admin123');
-            }
-        }
-    }, [user, loading, router]);
-
     // Close sidebar on route change
     useEffect(() => {
         setIsSidebarOpen(false);
     }, [pathname]);
 
     if (loading) return null;
-    if (!user || user.role !== 'admin') return null;
 
     return (
         <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#F5F6FA', fontFamily: 'Inter, sans-serif' }}>

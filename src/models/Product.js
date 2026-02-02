@@ -6,10 +6,10 @@ const ProductSchema = new mongoose.Schema({
         required: true,
         unique: true, // Assuming you want to keep the numeric ID for now, or you can switch to _id
     },
-    name: {
+    title: {
         type: String,
-        required: [true, 'Please provide a name for this product.'],
-        maxlength: [60, 'Name cannot be more than 60 characters'],
+        required: [true, 'Please provide a title for this product.'],
+        maxlength: [60, 'Title cannot be more than 60 characters'],
     },
     description: {
         type: String,
@@ -23,7 +23,7 @@ const ProductSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please provide a category for this product.'],
     },
-    image: {
+    img: {
         type: String,
         required: [true, 'Please provide an image URL for this product.'],
     },
